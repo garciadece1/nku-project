@@ -10,6 +10,9 @@ gem 'bootstrap-sass'
 gem 'thin'
 gem 'bcrypt'
 
+# Provide functionality required by has_secure_password:
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
