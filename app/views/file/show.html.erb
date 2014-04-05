@@ -1,0 +1,9 @@
+<%- title @file.name %>
+
+<%= flash_messages %>
+
+<h1><%= @file.name %></h1>
+
+<a href="<%= file_download_path(@file) %>">Download</a>
+
+<p>Share this link: <%= file_url(@file) %> </p>
