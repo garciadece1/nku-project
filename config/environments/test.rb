@@ -33,4 +33,7 @@ NkuProject::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Location of the public files. Ideally this folder should be far from the webroot
+  config.public_file_path = "uploads/"
 end

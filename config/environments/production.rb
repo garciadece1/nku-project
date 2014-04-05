@@ -77,4 +77,8 @@ NkuProject::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Location of the public files. Ideally this folder should be far from the webroot
+  config.public_file_path = "uploads/"
+
 end

@@ -26,4 +26,7 @@ NkuProject::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Location of the public files. Ideally this folder should be far from the webroot
+  config.public_file_path = "uploads/"
 end
