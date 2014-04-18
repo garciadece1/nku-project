@@ -1,0 +1,24 @@
+<%= form_for @user do |f| %>  
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :placeholder => "Your name", autofocus: true, class: "form-control"  %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, :placeholder => "Your email address", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, :placeholder => "6 to 10 characters", class: "form-control"%>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :placeholder => "Repeat your password", class: "form-control"%>
+  </div>
+
+  <%= f.submit  :class=> "btn btn-primary", :value => "Submit" %>
+</form>
+<% end %>

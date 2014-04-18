@@ -1,0 +1,11 @@
+<%- title "My files" %>
+
+
+<% if current_user.verified? %>
+  <h3>My files</h3>
+  <%= render 'list' %>
+<% else %>
+  <h3>Please verify your email address to see your files on Docloud</h3>
+<% end %>
+
+  

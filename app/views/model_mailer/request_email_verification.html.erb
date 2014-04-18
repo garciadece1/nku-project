@@ -1,0 +1,4 @@
+Hi <%= @verification.user.name%> <br /><br />
+
+Welcome to docloud.co! If you want to see your files, click the link below to confirm your email address:
+<a href="<%= show_verifications_url(key: @verification.key) %>"><%= show_verifications_url(key: @verification.key) %></a>

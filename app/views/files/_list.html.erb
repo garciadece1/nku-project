@@ -1,0 +1,19 @@
+
+<% unless @documents.blank? %>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Size</th>
+    <th>Date</th>
+  </tr>
+  <% @documents.each do |document|  %>
+    <tr>
+      <td style="vertical-align:middle"> <%= link_to document.name, file_path(key: document.key) %> </td>
+      <td style="vertical-align:middle"> <%= number_to_human_size(document.size) %> </td>
+      <td style="vertical-align:middle"> <%= document.created_at.to_formatted_s(:long_ordinal) %> </td>
+    </tr>  
+  <% end %>
+</table>
+<% else %>
+  No document has been uploaded yet.
+<% end %>
