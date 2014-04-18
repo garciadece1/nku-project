@@ -1,4 +1,43 @@
+<%= flash_messages %>
+
 <%= form_tag({action: :import}, multipart: true) do %>
-  <div class="form-group"><%= file_field_tag :file, accept: "*" %></div>
-  <div class="form-group"><%= submit_tag "Upload", class: "btn btn-primary" %></div>
+  <a type="button" class="btn btn-default btn-select-files">
+    <%= file_field_tag :file, accept: "*" %>
+    <i class="fa fa-files-o"></i> Select the documents
+  </a>
+  <span class="drag-drop-tip"></span>
+
+  <% if not signed_in? %>
+    <div class="form-group save-with">
+      <%= check_box_tag 'save' %>
+      <label for="save">Save docs with an email address</label>
+      <div id="email-box">
+        <%= text_field_tag :email, nil, class: 'form-control', placeholder: 'Enter your email' %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      <i class="fa fa-cloud-upload"></i>
+    </button>
+  </div>
 <% end %>
+
+<%= content_for :javascript do %>
+<script type="text/javascript">
+  $("#save").click(function() { 
+    if (this.checked) {
+      $("#email-box").slideDown("fast");
+      $("#email").focus();
+    } else {
+      if (document.readyState == 'complete') {
+        $("#email-box").slideUp("fast");
+      } else {
+        $("#email-box").hide();
+      }
+    }
+  }).trigger("click").trigger("click");
+</script>
+<% end %>
+

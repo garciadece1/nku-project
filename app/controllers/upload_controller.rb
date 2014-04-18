@@ -3,11 +3,12 @@ class UploadController < ApplicationController
   end
 
   def import
-    doc = Document.import(params[:file])
+    email = signed_in? ? current_user.email : params[:email]
+    doc = Document.import(params[:file], email)
     if doc
-      redirect_to file_path(doc), :notice => "Doc uploaded!"
+      redirect_to file_path(key: doc.key), :notice => "Documents uploaded!"
     else
-      flash[:error] = "Something went wrong! Try to reupload the docs"
+      flash.now[:error] = "Something went wrong! Try to reupload the documents"
     end
   end
 end

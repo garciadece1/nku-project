@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405031357) do
+ActiveRecord::Schema.define(version: 20140418200325) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140405031357) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "content_type"
+    t.string   "key"
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
@@ -33,6 +34,16 @@ ActiveRecord::Schema.define(version: 20140405031357) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "completed_profile"
+    t.boolean  "verified"
+    t.boolean  "completed"
+    t.string   "remember_token"
+  end
+
+  create_table "verifications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

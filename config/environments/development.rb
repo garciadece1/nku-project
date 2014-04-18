@@ -29,4 +29,18 @@ NkuProject::Application.configure do
 
   # Location of the public files. Ideally this folder should be far from the webroot
   config.public_file_path = "uploads/"
+
+  # Mailgun configuration
+  config.action_mailer.default_url_options = {:host => "garciadece1-72833.use1.nitrousbox.com:3000"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "sandbox5a1aa2c9fe2a494292feb45895d3f439.mailgun.org",
+  :user_name => "postmaster@sandbox5a1aa2c9fe2a494292feb45895d3f439.mailgun.org",
+  :password => "2minllu4p6l1"
+}
 end
