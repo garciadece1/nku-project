@@ -1,7 +1,10 @@
 NkuProject::Application.routes.draw do
+
+  root "upload#index"
+
+
   get "files/show"
   get "files/download"
-  root "upload#index"
   post "upload/import" => "upload#import"
   get "upload/import" => "upload#index"
   get "verify-email/:key" => "verifications#show", as: 'show_verifications'
@@ -14,9 +17,7 @@ NkuProject::Application.routes.draw do
 
   
   resources :users
-
   resource :sessions, only: [:create, :destroy]
-
 
   resources :files, only: [:show, :index] do 
     get "download"

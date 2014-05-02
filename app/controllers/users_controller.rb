@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in_user(@user)
-      redirect_to root_path, notice: "Your account was successfully created!"
+      redirect_to files_path
     else
       render 'new'
     end

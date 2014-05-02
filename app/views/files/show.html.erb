@@ -4,6 +4,21 @@
 
 <h1><%= @file.name %></h1>
 
-<a href="<%= file_download_path(key: @file.key) %>">Download</a>
+<a href="<%= file_download_path(key: @file.key) %>" class="btn btn-primary">Open</a>
 
-<p>Share this link: <%= file_url(key: @file.key) %> </p>
+<hr>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=262930937058472&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></di
+
+
+<p><i class="fa fa-share"></i> Share this link: <%= link_to file_url(key: @file.key) %> </p>

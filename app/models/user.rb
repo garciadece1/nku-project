@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_secure_password
-  has_many :documents
+  has_many :documents, dependent: :destroy
+  has_one :verification, dependent: :destroy
 
   private
   def generate_verification_email
