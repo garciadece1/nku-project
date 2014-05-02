@@ -9,13 +9,22 @@ class UsersController < ApplicationController
     params['verified'] = false
 
     current_user = User.find_by_email(params['email'])
-    @user = (current_user.nil?) ? User.new : current_user
 
-    if @user.save(params)
-      sign_in_user(@user)
-      redirect_to files_path
+    if (current_user.nil?)
+      current_user = User.new(params)
+      if current_user.save
+        sign_in_user(current_user)
+        redirect_to files_path
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      if current_user.update(params)
+        sign_in_user(current_user)
+        redirect_to files_path
+      else
+        render 'new'
+      end
     end
   end
 
