@@ -5,12 +5,16 @@
     <th>Name</th>
     <th>Size</th>
     <th>Date</th>
+    <th></th>
   </tr>
   <% @documents.each do |document|  %>
     <tr>
       <td style="vertical-align:middle"> <%= link_to document.name, file_path(key: document.key) %> </td>
       <td style="vertical-align:middle"> <%= number_to_human_size(document.size) %> </td>
       <td style="vertical-align:middle"> <%= document.created_at.to_formatted_s(:long_ordinal) %> </td>
+      <td> 
+        <%= link_to 'files/' << document.id.to_s , method: :delete, data: {confirm: "You sure?"}, class: "btn btn-danger"  do %> <i class="fa fa-trash-o"></i> <% end %>
+      </td>
     </tr>  
   <% end %>
 </table>

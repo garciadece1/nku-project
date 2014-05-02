@@ -5,6 +5,13 @@ class FilesController < ApplicationController
     @file = Document.find_by_key(params[:key])
   end
 
+  def destroy
+    @file = Document.find(params[:id])
+    if @file.destroy
+      redirect_to files_path :notice => "Document removed!"
+    end
+  end
+
   def download
     @file = Document.find_by_key(params[:key])
     send_file @file.file_src, :type => @file.content_type, :disposition => 'inline'

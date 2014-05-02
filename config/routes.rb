@@ -19,7 +19,7 @@ NkuProject::Application.routes.draw do
   resources :users
   resource :sessions, only: [:create, :destroy]
 
-  resources :files, only: [:show, :index] do 
+  resources :files, only: [:show, :index, :destroy] do 
     get "download"
   end
 end
